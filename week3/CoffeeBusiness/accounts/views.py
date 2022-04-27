@@ -1,40 +1,14 @@
 from time import timezone
-
+from django.contrib import auth
+from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 
-# Create your views here.
-# 로그인
-def login(request):
-    global errorMsg
-    # POST 요청시 입력된 데이터 저장
-    if request.method == 'POST':                                        # 로그인 버튼 클릭
-        username = request.POST['username']
-        password = request.POST['password']
-        try:
-            if not (username and password):                             # 아이디/비밀번호 중 빈칸이 존재할 때
-                errorMsg = '아이디/비밀번호를 입력하세요.'
-            else:                                                       # 아이디/비밀번호 모두 입력됐을 때
-                user = User.objects.get(username=username)                  # 등록된 아이디의 정보 가져오기
-                if check_password(password, user.password):                 # 등록된 아이디의 비밀번호가 맞으면
-                    request.session['id'] = user.id                         # 세션에 번호 추가
-                    request.session['username'] = user.username             # 세션에 아이디 추가
-                    request.session['email'] = user.email                   # 세션에 이메일 추가
-                    return redirect('/')
-                else:                                                   # 등록된 아이디의 비밀번호가 틀리면
-                    errorMsg = '비밀번호가 틀렸습니다.'
-        except:                                                         # 등록된 아이디의 정보가 없을 때
-            errorMsg = '가입하지 않은 아이디 입니다.'
-
-        return render(request, 'login.html', {'error': errorMsg})   # 에러 메세지와 로그인 페이지(login.html) 리턴
-    # GET 요청시
-    return render(request, 'login.html')                            # 로그인 페이지(login.html) 리턴
-
 # 회원 가입
 def signup(request):
-    global errorMsg
+    global errorMsg     # 에러메시지
     # POST 요청 시 입력된 데이터(사용자 정보) 저장
     if request.method == 'POST':
         username = request.POST['username']
@@ -63,6 +37,32 @@ def signup(request):
         return render(request, 'signup.html', {'error': errorMsg})
     # 회원가입 성공 후 이동
     return render(request, 'signup.html')
+
+# 로그인
+def login(request):
+    global errorMsg         # 에러메시지
+    # POST 요청시 입력된 데이터 저장
+    if request.method == 'POST':                                        # 로그인 버튼 클릭
+        username = request.POST['username']
+        password = request.POST['password']
+        try:
+            if not (username and password):                             # 아이디/비밀번호 중 빈칸이 존재할 때
+                errorMsg = '아이디/비밀번호를 입력하세요.'
+            else:                                                       # 아이디/비밀번호 모두 입력됐을 때
+                user = User.objects.get(username=username)                  # 등록된 아이디의 정보 가져오기
+                if check_password(password, user.password):                 # 등록된 아이디의 비밀번호가 맞으면
+                    request.session['id'] = user.id                         # 세션에 번호 추가
+                    request.session['username'] = user.username             # 세션에 아이디 추가
+                    request.session['email'] = user.email                   # 세션에 이메일 추가
+                    return redirect('/')
+                else:                                                   # 등록된 아이디의 비밀번호가 틀리면
+                    errorMsg = '비밀번호가 틀렸습니다.'
+        except:                                                         # 등록된 아이디의 정보가 없을 때
+            errorMsg = '가입하지 않은 아이디 입니다.'
+
+        return render(request, 'login.html', {'error': errorMsg})   # 에러 메세지와 로그인 페이지(login.html) 리턴
+    # GET 요청시
+    return render(request, 'login.html')                            # 로그인 페이지(login.html) 리턴
 
 # 로그아웃
 def logout(request):
