@@ -25,15 +25,15 @@
                     <div class="product-item-title d-flex">
                         <div class="bg-faded p-5 d-flex ms-auto rounded">
                             <h2 class="section-heading mb-0">
-                                <span class="section-heading-upper">Iced Coffee</span>
-                                <a href="/product/1/"><span class="section-heading-lower">아이스 커피</span></a>
+                                <span class="section-heading-upper">{{ content_list1.title_en }}</span>
+                                <a href="/product/1/"><span class="section-heading-lower">{{ content_list1.title_kr }}</span></a>
                             </h2>
                         </div>
                     </div>
                     {% load static %}
                     <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static 'products-01.jpg' %}" alt="..." />
                     <div class="product-item-description d-flex me-auto">
-                        <div class="bg-faded p-5 rounded"><p class="mb-0">케냐, 하우스 블렌드 등 약간의 산미가 있는 커피를 드립 방식으로 추출한 후 얼음과 함께 제공하는 커피 입니다. 아이스 커피로 적합한 프리미엄 원두를 이용하여 깔끔하고 상큼한 맛을 느끼실 수 있습니다.</p></div>
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">{{ content_list1.detail|truncatewords:30 }}</p></div>
                     </div>
                 </div>
             </div>
@@ -44,15 +44,15 @@
                     <div class="product-item-title d-flex">
                         <div class="bg-faded p-5 d-flex me-auto rounded">
                             <h2 class="section-heading mb-0">
-                                <span class="section-heading-upper">Hazelnut Chocolate Bread</span>
-                                <a href="/product/2/"><span class="section-heading-lower">베이크드 헤이즐넛 쇼콜라넛</span></a>
+                                <span class="section-heading-upper">{{ content_list2.title_en }}</span>
+                                <a href="/product/2/"><span class="section-heading-lower">{{ content_list2.title_kr }}</span></a>
                             </h2>
                         </div>
                     </div>
                     {% load static %}
                     <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static 'products-02.jpg' %}" alt="..." />
                     <div class="product-item-description d-flex ms-auto">
-                        <div class="bg-faded p-5 rounded"><p class="mb-0">두유와 피칸을 넣은 담백하고 고소한 빵에 헤이즐넛 초콜릿을 토핑한 베이크드 도넛입니다. 지구를 위한 이유 있는 편식, Plant Based Food 입니다.</p></div>
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">{{ content_list2.detail|truncatewords:30 }}</p></div>
                     </div>
                 </div>
             </div>
@@ -63,16 +63,16 @@
                     <div class="product-item-title d-flex">
                         <div class="bg-faded p-5 d-flex ms-auto rounded">
                             <h2 class="section-heading mb-0">
-                                <span class="section-heading-upper">Teavana blue glass coldcup</span>
-                                <a href="/product/3/"><span class="section-heading-lower">티바나 블루 글라스 콜드컵</span></a>
+                                <span class="section-heading-upper">{{ content_list3.title_en }}</span>
+                                {{ content_list3.image1 }}
+                                <a href="/product/3/"><span class="section-heading-lower">{{ content_list3.title_kr }}</span></a>
                             </h2>
                         </div>
                     </div>
                     {% load static %}
                     <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static 'products-03.jpg' %}" alt="..." />
                     <div class="product-item-description d-flex me-auto">
-                        <div class="bg-faded p-5 rounded"><p class="mb-0">단일 벽(Single-wall) 구조의 글라스 콜드컵입니다.
-재활용 유리를 사용하여 제작되었으며 컵 표면에 티바나 로고가 양각으로 디자인 되어있어 독특한 질감과 시원한 느낌을 자아내는 찬 음료 전용 콜드컵 텀블러입니다. 리드와 빨대가 블루 컬러로 매치됩니다.</p></div>
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">{{ content_list3.detail|truncatewords:30 }}</p></div>
                     </div>
                 </div>
             </div>
