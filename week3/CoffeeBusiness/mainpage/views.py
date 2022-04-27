@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render
 
+from product.models import Product
 
-# Create your views here
 
 def landing(request):
     user = None
@@ -26,10 +26,18 @@ def about(request):
 
 def products(request):
     user = None
+    contents = Product.objects.all()
+    print(contents[0])
+    content_list1 = Product.objects.get(id=2)
+    content_list2 = Product.objects.get(id=2)
+    content_list3 = Product.objects.get(id=2)
     if request.session.get('id'):
         user = User.objects.get(id=request.session.get('id'))
 
     context = {
-        'user': user
+        'user': user,
+        'content_list1' : content_list1,
+        'content_list2' : content_list2,
+        'content_list3' : content_list3,
     }
     return render(request, "products.html", context=context)

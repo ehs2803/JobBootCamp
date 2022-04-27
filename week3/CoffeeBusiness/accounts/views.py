@@ -1,4 +1,4 @@
-from time import timezone
+from django.utils import timezone
 from django.contrib import auth
 from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import check_password
@@ -15,11 +15,11 @@ def signup(request):
         email = request.POST['email']
         password = request.POST['password']
         confirm = request.POST['confirm']
-
+        print(username, email, password, confirm)
         # 회원가입
         try:
             # 회원가입 실패 시
-            if not (username and password and confirm and  email):
+            if not (username and password and confirm and email):
                 errorMsg = '빈칸이 존재합니다!'
             elif password != confirm:
                 errorMsg = '비밀번호가 일치하지 않습니다!'
@@ -31,6 +31,7 @@ def signup(request):
                     password=password,
                     date_joined=timezone.now()
                 ).save()
+                print('----------------------')
                 return redirect('')         # 회원가입 성공했다는 메시지 출력 후 로그인 페이지로 이동(예정)
         except:
             errorMsg = '빈칸이 존재합니다!'
@@ -45,6 +46,7 @@ def login(request):
     if request.method == 'POST':                                        # 로그인 버튼 클릭
         username = request.POST['username']
         password = request.POST['password']
+        print(username, password)
         try:
             if not (username and password):                             # 아이디/비밀번호 중 빈칸이 존재할 때
                 errorMsg = '아이디/비밀번호를 입력하세요.'
