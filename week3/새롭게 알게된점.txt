@@ -2,3 +2,4 @@
 -admin.py에 모델을 등록하면 admin페이지에서 간편하게 데이터를 추가할 수 있어 테스트를 손쉽게 할 수 있음.
 -sqlite3에 대해서 DB Browser을 통해서 쉽게 테이블을 생성후 python manage.py inspectdb를 통해 코드를 알아낸후 model.py에 저장한다.
 -imagefield와 저장 방법을 알게됨.
+-media 파일 가져오려면 url.py에 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 설정해줘야됨.

@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     {% load static %}
-                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static 'products-01.jpg' %}" alt="..." />
+                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{content_list1.image1.url}}" alt="..." />
                     <div class="product-item-description d-flex me-auto">
                         <div class="bg-faded p-5 rounded"><p class="mb-0">{{ content_list1.detail|truncatewords:30 }}</p></div>
                     </div>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     {% load static %}
-                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static 'products-02.jpg' %}" alt="..." />
+                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{content_list2.image1.url}}" alt="..." />
                     <div class="product-item-description d-flex ms-auto">
                         <div class="bg-faded p-5 rounded"><p class="mb-0">{{ content_list2.detail|truncatewords:30 }}</p></div>
                     </div>
@@ -64,13 +64,12 @@
                         <div class="bg-faded p-5 d-flex ms-auto rounded">
                             <h2 class="section-heading mb-0">
                                 <span class="section-heading-upper">{{ content_list3.title_en }}</span>
-                                {{ content_list3.image1 }}
                                 <a href="/product/3/"><span class="section-heading-lower">{{ content_list3.title_kr }}</span></a>
                             </h2>
                         </div>
                     </div>
                     {% load static %}
-                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static 'products-03.jpg' %}" alt="..." />
+                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{content_list3.image1.url}}" alt="..." />
                     <div class="product-item-description d-flex me-auto">
                         <div class="bg-faded p-5 rounded"><p class="mb-0">{{ content_list3.detail|truncatewords:30 }}</p></div>
                     </div>
