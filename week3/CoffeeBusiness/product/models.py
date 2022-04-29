@@ -9,6 +9,7 @@ class Product(models.Model):
     image1 = models.ImageField(upload_to='images/')
     image2 = models.ImageField(upload_to='images/', blank=True, null=True)
     image3 = models.ImageField(upload_to='images/', blank=True, null=True)
+    price = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
