@@ -4,25 +4,71 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        body{
+        body {
             background-color: #ffc363;
         }
+        #b{
+            background-color: #ffc363;
+        }
+        .fw-bold{
+            font-weight: bold;
+            font-size: 25px;
+        }
+        .ms-3{
+            font-size: 15px;
+        }
     </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
-<body>
+<body id="b">
 
 <div align="center">
 
-<h1>{{ content.title_en }}</h1>
-<br>
-<h1>{{ content.title_kr }}</h1>
-<br>
-<img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{content.image1.url}}" alt="..." />
-<br>
+    <h1>{{ content.title_en }}</h1>
+    <br>
+    <h1>{{ content.title_kr }}</h1>
+    <br>
+    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{ content.image1.url }}"
+         alt="..."/>
+    <br>
     <h4>가격 : {{ content.price }} 원</h4>
-<h4></p>{{ content.detail }}<p></h4>
-<br>
+    <h4></p>{{ content.detail }}<p></h4>
+    <br>
 
+</div>
+<div align="center">
+    <section class="mb-5">
+        <div class="card bg-light">
+            <div class="card-body">
+                <form method="post" class="mb-4" action="{% url 'comment_create' content.id %}">
+                    {% csrf_token %}
+                    <textarea name="content" rows="3" cols="150" placeholder="내용을 입력해주세요."></textarea>
+                    <button type="submit" class="btn btn-primary">submit</button>
+                </form>
+                {% for comment in content.comment_set.all %}
+                    <div class="d-flex">
+                        <div class="ms-3">
+                            <div class="fw-bold">{{ comment.author.username }} &nbsp&nbsp{{ comment.create_date }}
+                                {% if comment.create_date != comment.modify_date %}
+                                    / 수정일자: {{ comment.modify_date }}
+                                {% endif %}
+                                {% if user == comment.author %}
+                                    <a href="{% url 'comment_update' comment.id %}"
+                                       class="btn btn-sm btn-outline-secondary">수정</a>
+                                    <a href="{% url 'comment_delete' comment.id %}"
+                                       class="btn btn-sm btn-outline-secondary">삭제</a>
+                                {% endif %}
+                            </div>
+
+                            {{ comment.content }}
+                        <hr>
+                        </div>
+                    </div>
+                    <br/>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 </div>
 
 </body>
