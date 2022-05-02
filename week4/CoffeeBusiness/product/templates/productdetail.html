@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: #ffc363;
+        }
+    </style>
+</head>
+<body>
+
+<div align="center">
+
+<h1>{{ content.title_en }}</h1>
+<br>
+<h1>{{ content.title_kr }}</h1>
+<br>
+<img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{content.image1.url}}" alt="..." />
+<br>
+    <h4>가격 : {{ content.price }} 원</h4>
+<h4></p>{{ content.detail }}<p></h4>
+<br>
+
+</div>
+
+</body>
+</html>
