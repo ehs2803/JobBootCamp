@@ -22,7 +22,7 @@ def detail(request, content_id):
     }
     return render(request, "productdetail.html", context=context)
 
-@login_required(login_url='accounts:login')
+
 def comment_create(request, content_id):
     user = None
     if request.session.get('id'):
@@ -42,7 +42,6 @@ def comment_create(request, content_id):
         context = {'content': content, 'form': form}
         return render(request, 'productdetail.html', context)
 
-@login_required(login_url='accounts:login')
 def comment_update(request, comment_id):
     user = None
     if request.session.get('id'):
@@ -62,7 +61,7 @@ def comment_update(request, comment_id):
         context = {'comment': comment, 'form': form}
         return render(request, 'comment_form.html', context)
 
-@login_required(login_url='accounts:login')
+
 def comment_delete(request, comment_id):
     user = None
     if request.session.get('id'):
