@@ -48,7 +48,7 @@
                 <form method="post" class="mb-4" action="{% url 'comment_create' content.id %}">
                     {% csrf_token %}
                     <textarea name="content" rows="3" cols="150" placeholder="내용을 입력해주세요."></textarea>
-                    <button type="submit" class="btn btn-primary">submit</button>
+                    <button type="submit" class="btn btn-primary">댓글추가</button>
                 </form>
                 {% for comment in content.comment_set.all %}
                     <div class="d-flex">
